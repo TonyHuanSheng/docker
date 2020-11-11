@@ -108,3 +108,22 @@ $ docker save -o weddemo.tar joshhu/webdemo:u12
 ```
 $ docker load --input webdemo.tar
 ```
+
+### 刪除映像檔 docker rmi
+這個指令刪除本機中存放的映像檔。但如果有容器還在使用這個映像檔，則無法刪除。如果硬要刪除，可以下-f參數強迫刪除。
+
+前面提到映像檔是以層次的方式來存放，因此一個映像檔會有多個層次。你可以下--no-prune=true這個參數，只殺掉有tag name的映像檔。
+
+以一個標準的映像檔來說，只會殺掉最上面一層，因為建立時的其它中間層次並不會有tag name，
+
+這樣做的好處是可以留下許多映像檔共用的母層次。這也是Docker映像檔指令中，唯一能處理到層次這個等級的參數了
+
+```
+$ docker rmi --no-prune=true <user name>/<repo name>:<tag name>
+```
+### 一次刪掉所有的映像檔
+配合Linux的批次指令來一次清乾淨所的映像檔
+
+```
+$ docker rmi -f $(docker images -aq)
+```

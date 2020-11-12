@@ -36,6 +36,21 @@ https://peihsinsu.gitbooks.io/docker-note-book/content/common-docker-mysql.html
 ```
 $ docker version
 ```
+### 常用指令
+| 指令 | 說明 |
+|-----------------|----------|
+| run |新建及啟動 |
+| stop(contain ID) |停止|
+| start(contain ID)|啟動|
+| ps -a |列表|
+| rm (contain ID)|刪除|
+|exec (contain ID)|進入容器(開新的console)|
+|attach|進入容器(退出停止容器)|
+|logs (contain ID)|查看容器內資訊|
+|inspect|查看容器資訊|
+|stats|查看容器使用資源狀態|
+
+
 ### 查詢映像檔 
 ```
 $ docker search [key-workd]
@@ -95,6 +110,35 @@ images 常用參數
 $ docker pull <映像檔名稱>
 $ docker pull ubuntu:latest
 ```
+### 創建並啟動容器
+```
+$ docker run <參數><image name><想執行的語句>
+$ docker run -d --name mysql -p 3306:3306 mysql
+```
+* -i :讓容器標準輸入保持打開
+* -t :讓Docker分配一個虛擬終端(pseudo-tty)並綁到容器的標準輸入上
+* -d :背景執行
+* -e :設定環境變數
+* -P :Port 對應Port(host port:containar port)
+* -v :資料對應
+* --name :設定容器名稱
+* --link :串接其他容器
+* --network :加入指定網路
+
+### 查看容器列表
+```
+$ docker ps -a 
+```
+| 名稱 | 介紹 |
+|------|:--------:|
+| CONTAINER ID| 容器ID |
+| IMAGE | 映像檔名稱 |
+| COMMAND | 執行指令 |
+| CREATED | 創建時間 |
+| STATUS | 容器狀態|
+| POATS |開啟的Port號|
+| NAMES |容器名稱|
+
 ### 將映像檔存入/匯出電腦檔案格式 docker save/load
 
 Docker的映像檔雖然名為檔案，但其格式十分複雜。

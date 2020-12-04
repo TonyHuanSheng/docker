@@ -1,6 +1,11 @@
 # Docker
 參考網址: https://joshhu.gitbooks.io/dockercommands/content/DockerImages/ImageBasic.html
 https://peihsinsu.gitbooks.io/docker-note-book/content/common-docker-mysql.html
+### Ubuntu 安裝步驟 
+### 參考網址:https://blog.gtwang.org/virtualization/ubuntu-linux-install-docker-tutorial/
+
+
+
 ## Docker 下載步驟
 ### 移除舊版Docker
 ```

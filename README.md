@@ -201,5 +201,13 @@ $ sudo rm -r conf
 $ mkdir conf
 $ cd conf
 $ sudo touch my.cnf
+
+$ cd mysql
+$ docker run -dit --name dockermysql -p 3307:3306 \
+                  -v $PWD/conf/my.cmf:/etc/mysql/my.cnf \
+                  -v $PWD/logs:/logs \
+                  -v $PWD/data:/mysql_data \
+                  -e MYSQL_ROOT_PASSWORD=123456 \
+                  -d mysql
 ```
-再重跑上一段
+

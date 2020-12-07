@@ -193,4 +193,13 @@ $ docker run -dit --name dockermysql -p 3307:3306 \
 $ docker exec -it dockermysql mysql -u root -p
 Enter password:
 mysql>
-                  
+```
+如果docker: Error response from daemon: OCI runtime create failed: container_linux.go:349: starting container process caused "process_linux.go:449: container init caused \"rootfs_linux.go:58: mounting \\\"/home/user/mysql/conf/conf/my.cnf\\\" to rootfs \\\"/var/lib/docker/overlay2/3c051f3ae1e441904607b793c172c2a3d818c231b78c28681ab37facdb8917c9/merged\\\" at \\\"/var/lib/docker/overlay2/3c051f3ae1e441904607b793c172c2a3d818c231b78c28681ab37facdb8917c9/merged/etc/mysql/my.cnf\\\" caused \\\"not a directory\\\"\"": unknown: Are you trying to mount a directory onto a file (or vice-versa)? Check if the specified host path exists and is the expected type
+某個映像檔是目錄而不是文件，造成映射錯誤
+```
+$ sudo rm -r conf
+$ mkdir conf
+$ cd conf
+$ sudo touch my.cnf
+```
+再重跑上一段

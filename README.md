@@ -177,3 +177,20 @@ $ docker rmi --no-prune=true <user name>/<repo name>:<tag name>
 ```
 $ docker rmi -f $(docker images -aq)
 ```
+
+### Docker run mysql
+```docker
+$ systemctl start docker
+$ docker pull mysql
+$ mkdir -p ~/mysql/data ~/mysql/logs ~/mysql/conf
+$ cd mysql
+$ docker run -dit --name dockermysql -p 3307:3306 \
+                  -v $PWD/conf/my.cmf:/etc/mysql/my.cnf \
+                  -v $PWD/logs:/logs \
+                  -v $PWD/data:/mysql_data \
+                  -e MYSQL_ROOT_PASSWORD=123456 \
+                  -d mysql
+$ docker exec -it dockermysql mysql -u root -p
+Enter password:
+mysql>
+                  
